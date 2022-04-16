@@ -1,0 +1,22 @@
+.products-section {
+  overflow-y: scroll;
+}
+
+/* main-section */
+.main-section {
+  padding: 2rem;
+  width: 100%;
+  background-color: white;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: space-evenly;
+  row-gap: 2rem;
+}
+
+/* Hide Scrollbar */
+.products-section::-webkit-scrollbar {
+  display: none;
+}
+.products-section {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
