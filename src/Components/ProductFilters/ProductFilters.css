@@ -1,0 +1,41 @@
+/* sidebar */
+.sidebar {
+  background-color: white;
+  padding: 1rem 2rem;
+  overflow-y: scroll;
+  color: var(--grey-color-dark);
+  border-right: 0.3px solid gainsboro;
+}
+.sidebar .list-header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter-checkbox input {
+  margin-right: 0.5rem;
+}
+.filter-checkbox {
+  color: var(--grey-color-dark);
+}
+
+/* Hide Scrollbar */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.star-rating {
+  color: #ffb400;
+}
+
+@media all and (max-width: 670px) {
+  .sidebar {
+    display: none;
+  }
+  .sidebar.active {
+    display: unset;
+  }
+}
