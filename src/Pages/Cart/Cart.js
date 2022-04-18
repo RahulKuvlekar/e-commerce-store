@@ -1,5 +1,4 @@
 import React from "react";
-import CartCard from "../../Components/CartCard/CartCard";
 import CartListing from "../../Components/CartListing/CartListing";
 import PricingSection from "../../Components/PricingSection/PricingSection";
 import "./Cart.css";
