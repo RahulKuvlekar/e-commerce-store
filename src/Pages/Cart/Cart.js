@@ -1,5 +1,4 @@
 import React from "react";
-import CartListing from "../../Components/CartListing/CartListing";
 import PricingSection from "../../Components/PricingSection/PricingSection";
 import "./Cart.css";
 
@@ -8,9 +7,7 @@ const Cart = () => {
     <div>
       <h1 className="page-title page-title-center">My Cart</h1>
       <div className="cart grid">
-        <div className="cart-section">
-          <CartListing />
-        </div>
+        <div className="cart-section"></div>
         <PricingSection />
       </div>
     </div>
