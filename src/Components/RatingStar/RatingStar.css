@@ -1,0 +1,6 @@
+.ratingStar-section {
+  opacity: 0.4;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
