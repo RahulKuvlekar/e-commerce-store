@@ -1,4 +1,4 @@
-import { FaHeart, FaShoppingCart, FaUserAlt } from "react-icons/fa";
+import { FaHeart, FaShoppingCart} from "react-icons/fa";
 
 export const NavMenus = [
   {
@@ -12,25 +12,6 @@ export const NavMenus = [
 ];
 
 export const NavIconMenus = [
-  {
-    name: "Profile",
-    pathname: "/",
-    icon: <FaUserAlt />,
-    dropdown: [
-      {
-        name: "Login",
-        pathname: "/",
-      },
-      {
-        name: "SignUp",
-        pathname: "/",
-      },
-      {
-        name: "Logout",
-        pathname: "/",
-      },
-    ],
-  },
   {
     name: "Wishlist",
     pathname: "/wishlist",

@@ -2,6 +2,7 @@ import React from "react";
 import "./NavigationBar.css";
 import { NavIconMenus, NavMenus } from "./menus";
 import { Link } from "react-router-dom";
+import ProfileDropdownButton from "../UI/ProfileDropdownButton/ProfileDropdownButton";
 
 const RenderMenus = ({ name, pathname }, idx) => {
   return (
@@ -105,6 +106,7 @@ const NavigationBar = () => {
             {/* section to show button icons and text below it on nav bar  */}
 
             <ul className="nav-pill nav-btn-icons">
+              <ProfileDropdownButton />
               {NavIconMenus && NavIconMenus.map(RenderIconMenus)}
             </ul>
           </div>
