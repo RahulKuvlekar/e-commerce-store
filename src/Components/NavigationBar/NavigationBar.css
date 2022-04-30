@@ -22,14 +22,16 @@
   display: none;
 }
 .nav-bar .profile-dropdown li {
-  color: var(--default-color);
+  color: var(--grey-color-dark);
   font-size: 1rem;
   font-weight: 700;
 }
-.nav-bar .profile-dropdown:hover li a {
-  color: var(--default-color);
+.nav-bar .profile-dropdown:hover li a,
+.nav-bar .profile-dropdown:hover li button {
+  color: var(--grey-color-dark);
 }
-.nav-bar .profile-dropdown:hover li:hover a {
+.nav-bar .profile-dropdown:hover li:hover a,
+.nav-bar .profile-dropdown:hover li:hover button {
   color: var(--primary-hover);
 }
 .profile-btn-icon {
@@ -37,6 +39,15 @@
 }
 .profile-btn-icon:hover .profile-dropdown {
   display: block;
+}
+
+.btn-logout {
+  text-decoration: none;
+  border: none;
+  background-color: white;
+  color: var(--grey-color-dark);
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 /* Override - Navigation Style */
