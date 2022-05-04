@@ -1,5 +1,8 @@
 /* Dropdown Menu */
 
+/* .nav-pill.nav-btn-icons {
+  position: relative;
+} */
 .profile-dropdown {
   position: absolute;
   top: 35px;
@@ -57,9 +60,8 @@
   transition: transform 0.4s ease-in;
 }
 .badge-icon {
-  min-width: 20px;
-  min-height: 20px;
-  font-size: 0.8rem;
+  width: 20px;
+  height: 20px;
 }
 
 .home-banner {
