@@ -18,7 +18,6 @@ button.btn-link {
   height: 90vh;
   margin: auto;
   grid-template-columns: 250px 1fr;
-  /* background-color: rgb(250, 250, 250); */
   gap: 0;
 }
 

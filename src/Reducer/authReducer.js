@@ -21,4 +21,4 @@ const authReducer = (prev, action) => {
   }
 };
 
-export default authReducer;
+export { authReducer };
