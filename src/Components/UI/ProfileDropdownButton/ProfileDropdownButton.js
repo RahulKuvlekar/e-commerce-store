@@ -1,17 +1,29 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import useAuthContext from "../../../Hooks/useAuthContext";
-import { authFeatures } from "../../../Constants/constants";
+import { authFeatures, cartFeatures } from "../../../Constants/constants";
+import useCartContext from "../../../Hooks/useCartContext";
 
 const ProfileDropdownButton = () => {
-  const { authState, dispatchAuth } = useAuthContext();
-  const { isAuthenticated, userInfo } = authState;
+  const {
+    authState: { isAuthenticated, userInfo },
+    dispatchAuth,
+  } = useAuthContext();
+
   const { CLEAR_AUTH } = authFeatures;
+
+  const { cartDispatch } = useCartContext();
+  const { CLEAR_CART_DATA } = cartFeatures;
+
   const navigate = useNavigate();
 
   const LogoutService = () => {
     dispatchAuth({
       type: CLEAR_AUTH,
+    });
+
+    cartDispatch({
+      type: CLEAR_CART_DATA,
     });
 
     localStorage.removeItem("isAuth");
