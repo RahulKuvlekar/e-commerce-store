@@ -9,7 +9,13 @@
 }
 .price-section .price-title {
   text-align: center;
-  padding: 1rem;
+  /* padding: 1rem; */
+}
+.price-section .item-list {
+  height: 250px;
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .price-section .price-list {
   display: flex;

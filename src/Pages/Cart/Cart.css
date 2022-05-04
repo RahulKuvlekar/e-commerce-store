@@ -40,6 +40,16 @@
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
+.cart-empty {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.cart-empty button {
+  font-size: 2rem;
+}
 
 /* Modals Elements */
 .checkbox-group {
