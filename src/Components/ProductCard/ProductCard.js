@@ -1,6 +1,12 @@
 import React from "react";
 import RatingStar from "../RatingStar/RatingStar";
 import "./ProductCard.css";
+import useAuthContext from "../../Hooks/useAuthContext";
+import { addToMyCart } from "../../Utils/MyCart";
+import useCartContext from "../../Hooks/useCartContext";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useWishlistContext } from "../../Hooks/useWishlistContext";
+import { addToMyWishlist, removeFromMyWishlist } from "../../Utils/MyWishlist";
 
 const ProductCard = ({ product }) => {
   const {
@@ -17,6 +23,55 @@ const ProductCard = ({ product }) => {
     rating,
     fastDelivery,
   } = product;
+
+  const {
+    authState: { isAuthenticated, token },
+  } = useAuthContext();
+
+  const {
+    cartState: { cartList, loadingCart },
+    cartDispatch,
+  } = useCartContext();
+
+  const {
+    wishlistState: { wishlist, loadingWishlist },
+    dispatchWishlist,
+  } = useWishlistContext();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const productIsFound = cartList.find((product) => product["_id"] === _id);
+  const productInWishlist = wishlist.find((product) => product["_id"] === _id);
+
+  const wishlistHandler = () => {
+    !isAuthenticated
+      ? navigate("/login", {
+          state: { from: location },
+          replace: true,
+        })
+      : addToMyWishlist(dispatchWishlist, token, product);
+  };
+  const removeWishlistHandler = () =>
+    removeFromMyWishlist(dispatchWishlist, token, _id);
+
+  const cartHandler = () => {
+    if (!isAuthenticated) {
+      navigate("/login", {
+        state: { from: location },
+        replace: true,
+      });
+    } else {
+      addToMyCart(cartDispatch, token, product);
+      // if (productInWishlist) {
+      //   removeWishlistHandler();
+      // }
+    }
+  };
+  const goToCartHandler = () => {
+    navigate("/cart");
+  };
+
   return (
     <div
       className={`card-container ${!inStock ? "card-overlay" : null}`}
@@ -29,9 +84,23 @@ const ProductCard = ({ product }) => {
       )}
       <img className="card-img" src={image} alt={title} />
       {featured && <div className="card-badge card-badge-danger">Trending</div>}
-      <button className="card-btn-wishlist">
-        <i className="btn-icon fa-regular fa-heart"></i>
-      </button>
+      {productInWishlist ? (
+        <button
+          className="card-btn-wishlist"
+          onClick={removeWishlistHandler}
+          disabled={loadingWishlist}
+        >
+          <i className="btn-icon fa-solid fa-heart fa-pink"></i>
+        </button>
+      ) : (
+        <button
+          className="card-btn-wishlist"
+          onClick={wishlistHandler}
+          disabled={loadingWishlist}
+        >
+          <i className="btn-icon fa-regular fa-heart"></i>
+        </button>
+      )}
       <div className="card-content">
         {title && <h3 className="card-title">{title}</h3>}
         {subtitle && (
@@ -53,7 +122,19 @@ const ProductCard = ({ product }) => {
           </p>
         </div>
         <div className="btn-container">
-          <button className="btn btn-primary">Add to cart</button>
+          {productIsFound ? (
+            <button className="btn btn-success" onClick={goToCartHandler}>
+              Go to cart
+            </button>
+          ) : (
+            <button
+              className="btn btn-primary"
+              onClick={cartHandler}
+              disabled={loadingCart}
+            >
+              Add to cart
+            </button>
+          )}
           {/* <button className="btn btn-outline-primary">Add to wishlist</button> */}
         </div>
       </div>

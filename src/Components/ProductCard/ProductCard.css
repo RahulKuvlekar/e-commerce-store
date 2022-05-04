@@ -59,6 +59,9 @@
   background-color: #ff3f6c39;
   border-radius: 50%;
 }
+.card-btn-wishlist .btn-icon.fa-pink {
+  color: #ff3f6c;
+}
 
 .card-overlay-content {
   top: 25%;
