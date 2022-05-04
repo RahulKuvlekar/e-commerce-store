@@ -1,8 +1,10 @@
-import React from "react";
 import "./NavigationBar.css";
-import { NavIconMenus, NavMenus } from "./menus";
+import { NavMenus } from "./menus";
 import { Link } from "react-router-dom";
 import ProfileDropdownButton from "../UI/ProfileDropdownButton/ProfileDropdownButton";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import useCartContext from "../../Hooks/useCartContext";
+import { useWishlistContext } from "../../Hooks/useWishlistContext";
 
 const RenderMenus = ({ name, pathname }, idx) => {
   return (
@@ -55,6 +57,15 @@ const RenderIconMenus = ({ name, pathname, icon, dropdown }, idx) => {
 };
 
 const NavigationBar = () => {
+  const {
+    cartState: { cartList },
+  } = useCartContext();
+  const {
+    wishlistState: { wishlist },
+  } = useWishlistContext();
+
+  const myCartCount = cartList.reduce((acc, curr) => acc + curr.qty, 0);
+  const myWishlistCount = wishlist.length;
   return (
     <>
       <header className="nav-bar">
@@ -107,7 +118,43 @@ const NavigationBar = () => {
 
             <ul className="nav-pill nav-btn-icons">
               <ProfileDropdownButton />
-              {NavIconMenus && NavIconMenus.map(RenderIconMenus)}
+              <li className="list-inline-item">
+                <Link to="/wishlist" className="nav-icon-btn">
+                  {myWishlistCount > 0 ? (
+                    <div className="badge-container">
+                      <span className="nav-icon">
+                        <FaHeart />
+                      </span>
+                      <span className="badge-icon badge-icon-red">
+                        {myWishlistCount}
+                      </span>
+                    </div>
+                  ) : (
+                    <span className="nav-icon">
+                      <FaHeart />
+                    </span>
+                  )}
+                  <span className="nav-icon-text"> Wishlist </span>
+                </Link>
+              </li>
+
+              <li className="list-inline-item">
+                <Link to="/cart" className="nav-icon-btn">
+                  {myCartCount > 0 ? (
+                    <div className="badge-container">
+                      <FaShoppingCart />
+                      <span className="badge-icon badge-icon-red">
+                        {myCartCount}
+                      </span>
+                    </div>
+                  ) : (
+                    <span className="nav-icon">
+                      <FaShoppingCart />
+                    </span>
+                  )}
+                  <span className="nav-icon-text"> Cart </span>
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>

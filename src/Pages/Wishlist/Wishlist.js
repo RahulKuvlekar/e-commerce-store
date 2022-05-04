@@ -14,7 +14,9 @@ const Wishlist = () => {
 
   return (
     <div>
-      <h1 className="page-title page-title-center">My Wishlist</h1>
+      <h1 className="page-title page-title-center">
+        My Wishlist ({wishlist.length})
+      </h1>
       <div className="wishlist grid">
         {wishlist.length > 0 ? (
           wishlist.map((product) => (
