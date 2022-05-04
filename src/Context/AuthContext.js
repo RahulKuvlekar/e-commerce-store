@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
-import authReducer from "../Reducer/authReducer";
+import { authReducer } from "../Reducer/authReducer";
 
-export const AuthContext = createContext({
+const AuthContext = createContext({
   authState: {
     isAuthenticated: Boolean,
     token: String,
@@ -24,4 +24,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthProvider;
+export { AuthProvider, AuthContext };

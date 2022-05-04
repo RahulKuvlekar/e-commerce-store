@@ -8,18 +8,10 @@ import {
 import { productReducer } from "../Reducer/productReducer";
 import axios from "axios";
 import { getDiscountedPrice } from "../Utils/Products";
-import { products } from "../backend/db/products";
-import { categories } from "../backend/db/categories";
 
 const ProductContext = createContext({
   productState: Array,
   dispatchProduct: Function,
-  price: String,
-  rating: Number,
-  category: Array,
-  brand: Array,
-  outOfStock: Boolean,
-  fastDelivery: Boolean,
 });
 
 const ProductProvider = ({ children }) => {
@@ -65,6 +57,8 @@ const ProductProvider = ({ children }) => {
         payload: categories,
       });
     })();
+
+    //  eslint-disable-next-line
   }, []);
 
   return (

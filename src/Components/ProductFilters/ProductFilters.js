@@ -30,7 +30,6 @@ const ProductFilters = () => {
       payload: data,
     });
 
-  console.log("productState ", productState);
   return (
     <div className="sidebar">
       {/*  Using 'list' className name and 'list-collapsable' for creating nested list */}
