@@ -48,10 +48,6 @@
 }
 
 /* Override - Navigation Style */
-.nav-pill.nav-menu li.active a,
-.nav-pill.nav-btn-icons li.active a {
-  color: var(--primary-hover);
-}
 .burger-menu.nav-active {
   transform: rotate(90deg);
   transition: transform 0.4s ease-in;
@@ -64,6 +60,10 @@
 
 .home-banner {
   position: relative;
+}
+.nav-pill .nav-active {
+  color: var(--primary-hover);
+  font-weight: 700;
 }
 
 @media all and (max-width: 786px) {

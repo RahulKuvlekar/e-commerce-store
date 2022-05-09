@@ -1,6 +1,6 @@
 import "./NavigationBar.css";
 import { NavMenus } from "./menus";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import ProfileDropdownButton from "../UI/ProfileDropdownButton/ProfileDropdownButton";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import useCartContext from "../../Hooks/useCartContext";
@@ -9,9 +9,14 @@ import { useWishlistContext } from "../../Hooks/useWishlistContext";
 const RenderMenus = ({ name, pathname }, idx) => {
   return (
     <li className="list-inline-item" key={`menus-${name}-${idx}`}>
-      <Link to={pathname} className="link-no-style">
+      <NavLink
+        to={pathname}
+        className={({ isActive }) =>
+          isActive ? "nav-active link-no-style" : "link-no-style"
+        }
+      >
         {name}
-      </Link>
+      </NavLink>
     </li>
   );
 };
@@ -87,8 +92,7 @@ const NavigationBar = () => {
             {/* Brand title goes here  */}
             <div className="nav-logo-title">
               <Link className="link-no-style" to="/">
-                {" "}
-                Title{" "}
+                E-comm
               </Link>
             </div>
 
@@ -119,7 +123,12 @@ const NavigationBar = () => {
             <ul className="nav-pill nav-btn-icons">
               <ProfileDropdownButton />
               <li className="list-inline-item">
-                <Link to="/wishlist" className="nav-icon-btn">
+                <NavLink
+                  to="/wishlist"
+                  className={({ isActive }) =>
+                    isActive ? "nav-active nav-icon-btn" : "nav-icon-btn"
+                  }
+                >
                   {myWishlistCount > 0 ? (
                     <div className="badge-container">
                       <span className="nav-icon">
@@ -135,11 +144,16 @@ const NavigationBar = () => {
                     </span>
                   )}
                   <span className="nav-icon-text"> Wishlist </span>
-                </Link>
+                </NavLink>
               </li>
 
               <li className="list-inline-item">
-                <Link to="/cart" className="nav-icon-btn">
+                <NavLink
+                  to="/cart"
+                  className={({ isActive }) =>
+                    isActive ? "nav-active nav-icon-btn" : "nav-icon-btn"
+                  }
+                >
                   {myCartCount > 0 ? (
                     <div className="badge-container">
                       <FaShoppingCart />
@@ -153,7 +167,7 @@ const NavigationBar = () => {
                     </span>
                   )}
                   <span className="nav-icon-text"> Cart </span>
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

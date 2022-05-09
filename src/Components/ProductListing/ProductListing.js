@@ -4,6 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import { useProductContext } from "../../Hooks/useProductContext";
 import {
   sortByPrice,
+  sortByPriceRange,
   sortByRating,
   sortByBrand,
   sortByCategory,
@@ -16,6 +17,7 @@ const ProductListing = () => {
   const {
     productList,
     price,
+    priceRange,
     rating,
     brand,
     category,
@@ -24,7 +26,8 @@ const ProductListing = () => {
   } = productState;
 
   const sortedProduct = sortByPrice(productList, price);
-  const ratedProduct = sortByRating(sortedProduct, rating);
+  const underPriceRangeProduct = sortByPriceRange(sortedProduct, priceRange);
+  const ratedProduct = sortByRating(underPriceRangeProduct, rating);
   const categoryProduct = sortByCategory(ratedProduct, category);
   const brandedProduct = sortByBrand(categoryProduct, brand);
   const fastDeliveryProduct = sortbyFastDelivery(brandedProduct, fastDelivery);
