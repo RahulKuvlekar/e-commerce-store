@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import useAuthContext from "../../../Hooks/useAuthContext";
 import { authFeatures, cartFeatures } from "../../../Constants/constants";
@@ -49,10 +49,20 @@ const ProfileDropdownButton = () => {
         {!isAuthenticated && (
           <>
             <li>
-              <Link to={"/login"}>Login</Link>
+              <NavLink
+                to={"/login"}
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Login
+              </NavLink>
             </li>
             <li>
-              <Link to={"/signup"}>Signup</Link>
+              <Link
+                to={"/signup"}
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Signup
+              </Link>
             </li>
           </>
         )}
