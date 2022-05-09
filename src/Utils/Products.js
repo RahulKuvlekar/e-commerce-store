@@ -13,6 +13,9 @@ export const sortByPrice = (productList, price) => {
   }
   return productList;
 };
+export const sortByPriceRange = (productList, priceRange) => {
+  return productList.filter((product) => product.discountedPrice <= priceRange);
+};
 
 export const sortByRating = (productList, rating) =>
   rating !== null

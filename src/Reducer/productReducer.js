@@ -4,6 +4,7 @@ const {
   DISPLAY_PRODUCT,
   DISPLAY_CATEGORIES,
   SORT_BY_PRICE,
+  SORT_BY_PRICE_RANGE,
   SORT_BY_RATING,
   SORT_BY_CATEGORY,
   SORT_BY_BRAND,
@@ -20,6 +21,8 @@ const productReducer = (prevState, action) => {
       return { ...prevState, categoryList: action.payload };
     case SORT_BY_PRICE:
       return { ...prevState, price: action.payload };
+    case SORT_BY_PRICE_RANGE:
+      return { ...prevState, priceRange: Number(action.payload) };
     case SORT_BY_RATING:
       return { ...prevState, rating: action.payload };
     case SORT_BY_CATEGORY:
@@ -54,6 +57,7 @@ const productReducer = (prevState, action) => {
       return {
         ...prevState,
         price: null,
+        priceRange: 10000,
         rating: null,
         category: [],
         brand: [],

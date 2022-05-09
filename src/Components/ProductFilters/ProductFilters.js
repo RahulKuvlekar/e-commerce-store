@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { filterTypes } from "../../Constants/constants";
 import { useProductContext } from "../../Hooks/useProductContext";
 import "./ProductFilters.css";
@@ -8,6 +8,7 @@ const ProductFilters = () => {
   const {
     categoryList,
     price,
+    priceRange,
     rating,
     category,
     brand,
@@ -16,6 +17,7 @@ const ProductFilters = () => {
   } = productState;
   const {
     SORT_BY_PRICE,
+    SORT_BY_PRICE_RANGE,
     SORT_BY_RATING,
     SORT_BY_CATEGORY,
     SORT_BY_BRAND,
@@ -32,7 +34,6 @@ const ProductFilters = () => {
 
   return (
     <div className="sidebar">
-      {/*  Using 'list' className name and 'list-collapsable' for creating nested list */}
       <ul className="list">
         <div className="list-header">
           <div className="list-title">Filters</div>
@@ -77,6 +78,31 @@ const ProductFilters = () => {
               <label htmlFor="price-high"> High to Low</label>
             </li>
           </ul>
+        </li>
+        <br />
+        <hr />
+        <br />
+        <li className="list-collapsable">
+          <div className="h4">Price Range</div>
+          <div className="slider-container">
+            <div className="output-section">
+              <span className="output-start">0</span>
+              <span className="output-end">{priceRange}</span>
+            </div>
+
+            <input
+              type="range"
+              min="0"
+              max="10000"
+              step="1000"
+              value={priceRange}
+              className="slider"
+              id="myRange"
+              onChange={(e) =>
+                dispatchProductHandler(SORT_BY_PRICE_RANGE, e.target.value)
+              }
+            />
+          </div>
         </li>
         <br />
         <hr />

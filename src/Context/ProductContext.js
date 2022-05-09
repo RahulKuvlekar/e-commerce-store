@@ -20,6 +20,7 @@ const ProductProvider = ({ children }) => {
     productList: [],
     categoryList: [],
     price: null,
+    priceRange: 10000,
     rating: null,
     category: [],
     brand: [],
