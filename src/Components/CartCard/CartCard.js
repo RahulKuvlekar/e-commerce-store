@@ -29,7 +29,10 @@ const CartCard = ({ product }) => {
     cartDispatch,
   } = useCartContext();
 
-  const { dispatchWishlist } = useWishlistContext();
+  const {
+    wishlistState: { wishlist },
+    dispatchWishlist,
+  } = useWishlistContext();
 
   const incrementQuantity = () => {
     updateMyCart(cartDispatch, token, _id, "increment");
@@ -46,7 +49,9 @@ const CartCard = ({ product }) => {
     removeFromMyCart(cartDispatch, token, _id);
 
   const movetoWishlistHandler = () => {
-    addToMyWishlist(dispatchWishlist, token, product);
+    if (!wishlist.find((product) => product._id === _id))
+      addToMyWishlist(dispatchWishlist, token, product);
+
     removeFromCartHandler();
   };
 
