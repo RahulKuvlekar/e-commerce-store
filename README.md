@@ -1,6 +1,6 @@
 # E Commerce Store
  
-## [E-commerce-store](https://loafer-store.netlify.app) is a store for purchasing Items and it is designed using my own [Component Library](https://component-library-rk.netlify.app/) .
+## [E-commerce-store](https://e-commerce-store-rk.netlify.app/) is a store for purchasing Items and it is designed using my own [Component Library](https://component-library-rk.netlify.app/) .
  
 <br>
 
